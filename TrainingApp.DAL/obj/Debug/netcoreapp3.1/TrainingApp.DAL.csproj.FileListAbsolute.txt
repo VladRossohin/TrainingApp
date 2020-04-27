@@ -1,0 +1,9 @@
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\bin\Debug\netcoreapp3.1\TrainingApp.DAL.deps.json
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\bin\Debug\netcoreapp3.1\TrainingApp.DAL.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\bin\Debug\netcoreapp3.1\TrainingApp.DAL.pdb
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.csprojAssemblyReference.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.AssemblyInfoInputs.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.AssemblyInfo.cs
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.pdb
