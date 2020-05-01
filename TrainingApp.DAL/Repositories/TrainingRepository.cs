@@ -8,38 +8,39 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class RoleRepository : IRepository<Role> 
+    public class TrainingRepository : IRepository<Training>
     {
         private readonly TrainingDBContext Database;
 
-        public RoleRepository(TrainingDBContext database)
+        public TrainingRepository(TrainingDBContext database)
         {
             Database = database;
         }
 
-        public void DeleteItem(Role item)
+        public void DeleteItem(Training item)
         {
-            Database.Role.Remove(item);
+            Database.Training.Remove(item);
             Database.SaveChangesAsync();
         }
 
-        public Role GetItem(int? id)
+        public Training GetItem(int? id)
         {
-            var role = Database.Role.Include("User").Where(r => r.Id == id.Value).FirstOrDefault();
+            var training = Database.Training.Include("IdNavigation").Include("Excercise").Where(tr => tr.Id == id.Value).FirstOrDefault();
 
-            return role;
+            return training;
         }
 
-        public void SaveItem(Role item)
+        public void SaveItem(Training item)
         {
-            Database.Role.Add(item);
+            Database.Training.Add(item);
             Database.SaveChangesAsync();
         }
 
-        public void UpdateItem(Role item)
+        public void UpdateItem(Training item)
         {
             Database.Entry(item).State = EntityState.Modified;
-            Database.Role.Update(item);
+
+            Database.Update(item);
 
             Database.SaveChangesAsync();
         }
