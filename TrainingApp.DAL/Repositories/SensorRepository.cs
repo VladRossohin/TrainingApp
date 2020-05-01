@@ -8,20 +8,19 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class SensorRepository : IRepository<Sensor>
+    public class SensorRepository : CommonRepository<Sensor>, IRepository<Sensor>
     {
 
         private readonly TrainingDBContext Database;
 
-        public SensorRepository(TrainingDBContext database)
+        public SensorRepository(TrainingDBContext database) : base(database)
         {
-            Database = database;
+
         }
 
-        public void DeleteItem(Sensor item)
+        public IEnumerable<Sensor> GetAll()
         {
-            Database.Sensor.Remove(item);
-            Database.SaveChangesAsync();
+            return Database.Sensor;
         }
 
         public Sensor GetItem(int? id)
@@ -31,18 +30,5 @@ namespace TrainingApp.DAL.Repositories
             return sensor;
         }
 
-        public void SaveItem(Sensor item)
-        {
-            Database.Sensor.Add(item);
-            Database.SaveChangesAsync();
-        }
-
-        public void UpdateItem(Sensor item)
-        {
-            Database.Entry(item).State = EntityState.Modified;
-
-            Database.Sensor.Update(item);
-            Database.SaveChangesAsync();
-        }
     }
 }

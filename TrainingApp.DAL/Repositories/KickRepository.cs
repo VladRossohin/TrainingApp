@@ -8,20 +8,19 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class KickRepository : IRepository<Kick>
+    public class KickRepository : CommonRepository<Kick>, IRepository<Kick>
     {
 
         private readonly TrainingDBContext Database;
 
-        public KickRepository(TrainingDBContext database)
+        public KickRepository(TrainingDBContext database) : base(database)
         {
-            Database = database;
+
         }
 
-        public void DeleteItem(Kick item)
+        public IEnumerable<Kick> GetAll()
         {
-            Database.Kick.Remove(item);
-            Database.SaveChangesAsync();
+            return Database.Kick;
         }
 
         public Kick GetItem(int? id)
@@ -31,17 +30,5 @@ namespace TrainingApp.DAL.Repositories
             return kick;
         }
 
-        public void SaveItem(Kick item)
-        {
-            Database.Kick.Add(item);
-            Database.SaveChangesAsync();
-        }
-
-        public void UpdateItem(Kick item)
-        {
-            Database.Entry(item).State = EntityState.Modified;
-            Database.Kick.Update(item);
-            Database.SaveChangesAsync();
-        }
     }
 }

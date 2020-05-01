@@ -8,19 +8,18 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class TrainingRepository : IRepository<Training>
+    public class TrainingRepository : CommonRepository<Training>, IRepository<Training>
     {
         private readonly TrainingDBContext Database;
 
-        public TrainingRepository(TrainingDBContext database)
+        public TrainingRepository(TrainingDBContext database) : base(database)
         {
-            Database = database;
+
         }
 
-        public void DeleteItem(Training item)
+        public IEnumerable<Training> GetAll()
         {
-            Database.Training.Remove(item);
-            Database.SaveChangesAsync();
+            return Database.Training;
         }
 
         public Training GetItem(int? id)
@@ -30,19 +29,5 @@ namespace TrainingApp.DAL.Repositories
             return training;
         }
 
-        public void SaveItem(Training item)
-        {
-            Database.Training.Add(item);
-            Database.SaveChangesAsync();
-        }
-
-        public void UpdateItem(Training item)
-        {
-            Database.Entry(item).State = EntityState.Modified;
-
-            Database.Update(item);
-
-            Database.SaveChangesAsync();
-        }
     }
 }

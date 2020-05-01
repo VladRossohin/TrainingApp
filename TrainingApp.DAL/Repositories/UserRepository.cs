@@ -8,20 +8,18 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : CommonRepository<User>, IRepository<User>
     {
         private readonly TrainingDBContext Database;
 
-        public UserRepository(TrainingDBContext dBContext)
+        public UserRepository(TrainingDBContext database) : base(database)
         {
-            this.Database = dBContext;
+
         }
 
-        public void DeleteItem(User item)
+        public IEnumerable<User> GetAll()
         {
-            Database.User.Remove(item);
-
-            Database.SaveChangesAsync();
+            return Database.User;
         }
 
         public User GetItem(int? id)
@@ -31,20 +29,5 @@ namespace TrainingApp.DAL.Repositories
             return user;
         }
 
-        public void SaveItem(User item)
-        {
-            Database.User.Add(item);
-
-            Database.SaveChangesAsync();
-        }
-
-        public void UpdateItem(User item)
-        {
-            Database.Entry(item).State = EntityState.Modified;
-
-            Database.User.Update(item);
-
-            Database.SaveChangesAsync();
-        }
     }
 }
