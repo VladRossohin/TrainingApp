@@ -22,7 +22,7 @@ namespace TrainingApp.DAL.Repositories
             return Database.User;
         }
 
-        public User GetItem(int? id)
+        public User GetItem(long? id)
         {
             var user = Database.User.Include("Role").Include("Training").Where(user => user.Id == id.Value).FirstOrDefault();
 

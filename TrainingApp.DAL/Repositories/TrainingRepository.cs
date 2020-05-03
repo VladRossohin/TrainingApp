@@ -22,7 +22,7 @@ namespace TrainingApp.DAL.Repositories
             return Database.Training;
         }
 
-        public Training GetItem(int? id)
+        public Training GetItem(long? id)
         {
             var training = Database.Training.Include("IdNavigation").Include("Excercise").Where(tr => tr.Id == id.Value).FirstOrDefault();
 

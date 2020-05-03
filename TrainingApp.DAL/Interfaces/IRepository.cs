@@ -6,7 +6,7 @@ namespace TrainingApp.DAL.Interfaces
 {
     public interface IRepository<T>
     {
-        T GetItem(int? id);
+        T GetItem(long? id);
         IEnumerable<T> GetAll();
 
     

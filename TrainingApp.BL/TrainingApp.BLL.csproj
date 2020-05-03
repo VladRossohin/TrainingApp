@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\TrainingApp.DAL\TrainingApp.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
 

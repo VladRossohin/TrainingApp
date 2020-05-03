@@ -23,7 +23,7 @@ namespace TrainingApp.DAL.Repositories
             return Database.Sensor;
         }
 
-        public Sensor GetItem(int? id)
+        public Sensor GetItem(long? id)
         {
             var sensor = Database.Sensor.Include("Excercise").Include("Kick").Where(s => s.Id == id.Value).FirstOrDefault();
 

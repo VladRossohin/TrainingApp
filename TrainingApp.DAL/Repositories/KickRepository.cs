@@ -23,7 +23,7 @@ namespace TrainingApp.DAL.Repositories
             return Database.Kick;
         }
 
-        public Kick GetItem(int? id)
+        public Kick GetItem(long? id)
         {
             var kick = Database.Kick.Include("Excercise").Include("Sensor").Where(k => k.Id == id.Value).FirstOrDefault();
 
