@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrainingApp.DAL\TrainingApp.DAL.csproj" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\TrainingApp.DAL\TrainingApp.DAL.csproj" />
   </ItemGroup>
 
 </Project>

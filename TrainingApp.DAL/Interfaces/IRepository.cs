@@ -4,10 +4,10 @@ using System.Text;
 
 namespace TrainingApp.DAL.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : ICommonRepository<T>
     {
-        T GetItem(long? id);
-        IEnumerable<T> GetAll();
+        abstract T GetItem(long? id);
+        abstract IEnumerable<T> GetAll();
 
     
 

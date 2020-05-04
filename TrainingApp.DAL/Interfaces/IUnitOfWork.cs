@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using TrainingApp.DAL.Models;
+using TrainingApp.DAL.Repositories;
 
 namespace TrainingApp.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<Excercise> Excercises { get; }
-        IRepository<Kick> Kicks { get; }
-        IRepository<Role> Roles { get; }
-        IRepository<Sensor> Sensors { get; }
-        IRepository<Training> Trainings { get; }
-        IRepository<User> Users { get; }
+        ICommonRepository<Excercise> Excercises { get; }
+        ICommonRepository<Kick> Kicks { get; }
+        ICommonRepository<Role> Roles { get; }
+        ICommonRepository<Sensor> Sensors { get; }
+        ICommonRepository<Training> Trainings { get; }
+        CommonRepository<User> Users { get; }
 
         void Commit();
         void Rollback();

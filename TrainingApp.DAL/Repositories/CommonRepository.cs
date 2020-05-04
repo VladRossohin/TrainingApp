@@ -7,7 +7,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public abstract class CommonRepository<T> : ICommonRepository<T>
+    public abstract class CommonRepository<T> : IRepository<T>
     {
 
         private readonly TrainingDBContext Database;
@@ -16,6 +16,10 @@ namespace TrainingApp.DAL.Repositories
         {
             Database = database;
         }
+
+        public abstract IEnumerable<T> GetAll();
+        public abstract T GetItem(long? id);
+
 
         public void DeleteItem(T item)
         {

@@ -16,7 +16,5 @@ namespace TrainingApp.BLL.DTO
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public virtual UserDTO IdNavigation { get; set; }
-        public virtual ICollection<ExcerciseDTO> Excercise { get; set; }
     }
 }

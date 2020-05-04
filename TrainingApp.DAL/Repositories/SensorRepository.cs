@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class SensorRepository : CommonRepository<Sensor>, IRepository<Sensor>
+    public class SensorRepository : CommonRepository<Sensor>
     {
 
         private readonly TrainingDBContext Database;
@@ -18,12 +18,12 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<Sensor> GetAll()
+        public override IEnumerable<Sensor> GetAll()
         {
             return Database.Sensor;
         }
 
-        public Sensor GetItem(long? id)
+        public override Sensor GetItem(long? id)
         {
             var sensor = Database.Sensor.Include("Excercise").Include("Kick").Where(s => s.Id == id.Value).FirstOrDefault();
 

@@ -11,8 +11,5 @@ namespace TrainingApp.BLL.DTO
         public decimal? KickPower { get; set; }
         public decimal? ReactionSpeed { get; set; }
         public int? KickAccuracy { get; set; }
-
-        public virtual ExcerciseDTO Excercise { get; set; }
-        public virtual SensorDTO Sensor { get; set; }
     }
 }

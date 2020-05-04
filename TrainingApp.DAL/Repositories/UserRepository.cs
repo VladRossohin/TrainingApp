@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class UserRepository : CommonRepository<User>, IRepository<User>
+    public class UserRepository : CommonRepository<User>
     {
         private readonly TrainingDBContext Database;
 
@@ -17,17 +17,16 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<User> GetAll()
+        public override IEnumerable<User> GetAll()
         {
             return Database.User;
         }
 
-        public User GetItem(long? id)
+        public override User GetItem(long? id)
         {
-            var user = Database.User.Include("Role").Include("Training").Where(user => user.Id == id.Value).FirstOrDefault();
+            var user = Database.User.Include("Role").Include("Training").Where(u => u.Id == id.Value).FirstOrDefault();
 
             return user;
         }
-
     }
 }

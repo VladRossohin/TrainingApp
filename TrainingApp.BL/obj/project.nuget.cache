@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ehVIfat8Jt9mmHehF60xhLZZsYhvgMa7mA151/7UfA0YpmC/XKkkNz3a/o+I5BMBDLOnjkKAfGax9Mtvt3BFag==",
+  "dgSpecHash": "ryb156OkMlz+8ZR3PeTEBFtQAYjAl3Hct2q8WhRND3iPS10l+bFls2ipR8T0hr3ojS7pu4AfqeDAF+VwbNShvw==",
   "success": true,
   "projectFilePath": "D:\\Projects\\TrainingApp\\TrainingApp\\TrainingApp.BL\\TrainingApp.BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Vlad\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\entityframework\\6.4.0\\entityframework.6.4.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.0.0\\microsoft.aspnetcore.connections.abstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.0.0\\microsoft.aspnetcore.http.features.3.0.0.nupkg.sha512",

@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class ExcerciseRepository : CommonRepository<Excercise>, IRepository<Excercise>
+    public class ExcerciseRepository : CommonRepository<Excercise>
     {
 
         private readonly TrainingDBContext Database;
@@ -18,12 +18,12 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<Excercise> GetAll()
+        public override IEnumerable<Excercise> GetAll()
         {
             return Database.Excercise;
         }
 
-        public Excercise GetItem(long? id)
+        public override Excercise GetItem(long? id)
         {
             var excercise = Database.Excercise.Include("Sensor").Include("Training").Include("Kick").Where(exer => exer.Id == id.Value).FirstOrDefault();
 

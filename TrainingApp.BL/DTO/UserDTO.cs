@@ -11,7 +11,5 @@ namespace TrainingApp.BLL.DTO
         public string LastName { get; set; }
         public long RoleId { get; set; }
 
-        public virtual RoleDTO Role { get; set; }
-        public virtual TrainingDTO Training { get; set; }
     }
 }

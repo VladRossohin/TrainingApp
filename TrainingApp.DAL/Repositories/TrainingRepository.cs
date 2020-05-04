@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class TrainingRepository : CommonRepository<Training>, IRepository<Training>
+    public class TrainingRepository : CommonRepository<Training>
     {
         private readonly TrainingDBContext Database;
 
@@ -17,12 +17,12 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<Training> GetAll()
+        public override IEnumerable<Training> GetAll()
         {
             return Database.Training;
         }
 
-        public Training GetItem(long? id)
+        public override Training GetItem(long? id)
         {
             var training = Database.Training.Include("IdNavigation").Include("Excercise").Where(tr => tr.Id == id.Value).FirstOrDefault();
 

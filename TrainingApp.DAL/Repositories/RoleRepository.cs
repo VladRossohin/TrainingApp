@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class RoleRepository : CommonRepository<Role>, IRepository<Role> 
+    public class RoleRepository : CommonRepository<Role>
     {
         private readonly TrainingDBContext Database;
 
@@ -17,12 +17,12 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<Role> GetAll()
+        public override IEnumerable<Role> GetAll()
         {
             return Database.Role;
         }
 
-        public Role GetItem(long? id)
+        public override Role GetItem(long? id)
         {
             var role = Database.Role.Include("User").Where(r => r.Id == id.Value).FirstOrDefault();
 

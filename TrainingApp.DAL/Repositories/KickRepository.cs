@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class KickRepository : CommonRepository<Kick>, IRepository<Kick>
+    public class KickRepository : CommonRepository<Kick>
     {
 
         private readonly TrainingDBContext Database;
@@ -18,12 +18,12 @@ namespace TrainingApp.DAL.Repositories
 
         }
 
-        public IEnumerable<Kick> GetAll()
+        public override IEnumerable<Kick> GetAll()
         {
             return Database.Kick;
         }
 
-        public Kick GetItem(long? id)
+        public override Kick GetItem(long? id)
         {
             var kick = Database.Kick.Include("Excercise").Include("Sensor").Where(k => k.Id == id.Value).FirstOrDefault();
 
