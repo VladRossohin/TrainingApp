@@ -22,15 +22,15 @@ namespace TrainingApp.DAL.Repositories
             _dBContext = dBContext;
         }
 
-        public ICommonRepository<Excercise> Excercises => _excerciseRepository ?? new ExcerciseRepository(_dBContext);
+        public CommonRepository<Excercise> Excercises => _excerciseRepository ?? new ExcerciseRepository(_dBContext);
 
-        public ICommonRepository<Kick> Kicks => _kickRepository ?? new KickRepository(_dBContext);
+        public CommonRepository<Kick> Kicks => _kickRepository ?? new KickRepository(_dBContext);
 
-        public ICommonRepository<Role> Roles => _roleRepository ?? new RoleRepository(_dBContext);
+        public CommonRepository<Role> Roles => _roleRepository ?? new RoleRepository(_dBContext);
 
-        public ICommonRepository<Sensor> Sensors => _sensorRepository ?? new SensorRepository(_dBContext);
+        public CommonRepository<Sensor> Sensors => _sensorRepository ?? new SensorRepository(_dBContext);
 
-        public ICommonRepository<Training> Trainings => _trainingRepository ?? new TrainingRepository(_dBContext);
+        public CommonRepository<Training> Trainings => _trainingRepository ?? new TrainingRepository(_dBContext);
 
         public CommonRepository<User> Users => _userRepository ?? new UserRepository(_dBContext);
 

@@ -8,11 +8,11 @@ namespace TrainingApp.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        ICommonRepository<Excercise> Excercises { get; }
-        ICommonRepository<Kick> Kicks { get; }
-        ICommonRepository<Role> Roles { get; }
-        ICommonRepository<Sensor> Sensors { get; }
-        ICommonRepository<Training> Trainings { get; }
+        CommonRepository<Excercise> Excercises { get; }
+        CommonRepository<Kick> Kicks { get; }
+        CommonRepository<Role> Roles { get; }
+        CommonRepository<Sensor> Sensors { get; }
+        CommonRepository<Training> Trainings { get; }
         CommonRepository<User> Users { get; }
 
         void Commit();
