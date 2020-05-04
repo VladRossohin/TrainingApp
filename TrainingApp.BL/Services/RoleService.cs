@@ -65,7 +65,7 @@ namespace TrainingApp.BLL.Services
 
             if (role == null)
             {
-                throw new ValidationException($"There's no user with id = {id.Value}!", String.Empty);
+                throw new ValidationException($"There's no role with id = {id.Value}!", String.Empty);
             }
 
             var roleDto = Mapper.Map<Role, RoleDTO>(role);
