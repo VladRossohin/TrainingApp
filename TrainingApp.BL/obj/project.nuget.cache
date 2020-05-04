@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ryb156OkMlz+8ZR3PeTEBFtQAYjAl3Hct2q8WhRND3iPS10l+bFls2ipR8T0hr3ojS7pu4AfqeDAF+VwbNShvw==",
+  "dgSpecHash": "OdZmlc43+BPOaKTKVfRaDdIAzUNVqFPTzBVwJhgr57O4kE2J6581QsOwK7PXYkuUZm3rofgpEKEyxEPniqVjLQ==",
   "success": true,
   "projectFilePath": "D:\\Projects\\TrainingApp\\TrainingApp\\TrainingApp.BL\\TrainingApp.BLL.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\newtonsoft.json\\10.0.3\\newtonsoft.json.10.0.3.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\ninject\\3.3.4\\ninject.3.3.4.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
