@@ -12,3 +12,4 @@ D:\Projects\TrainingApp\TrainingApp\TrainingApp.BL\bin\Debug\netcoreapp3.1\Train
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.BL\bin\Debug\netcoreapp3.1\TrainingApp.DAL.pdb
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.BL\obj\Debug\netcoreapp3.1\TrainingApp.BLL.csproj.CopyComplete
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.BL\obj\Debug\netcoreapp3.1\TrainingApp.BLL.genruntimeconfig.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.BL\obj\Debug\netcoreapp3.1\TrainingApp.BLL.csproj.CoreCompileInputs.cache

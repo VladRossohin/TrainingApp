@@ -6,10 +6,7 @@ namespace TrainingApp.BLL.DTO
 {
     public class TrainingDTO
     {
-        public TrainingDTO()
-        {
-            Excercise = new HashSet<ExcerciseDTO>();
-        }
+       
 
         public long Id { get; set; }
         public long UserId { get; set; }
