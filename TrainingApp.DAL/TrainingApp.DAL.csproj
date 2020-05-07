@@ -16,19 +16,4 @@
     <PackageReference Include="Microsoft.Orleans.Clustering.AdoNet" Version="3.1.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="TrainingDataSet.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TrainingDataSet.xsd</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TrainingDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TrainingDataSet.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
 </Project>
