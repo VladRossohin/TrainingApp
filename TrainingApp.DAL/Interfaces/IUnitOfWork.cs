@@ -8,12 +8,12 @@ namespace TrainingApp.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        CommonRepository<Excercise> Excercises { get; }
-        CommonRepository<Kick> Kicks { get; }
-        CommonRepository<Role> Roles { get; }
-        CommonRepository<Sensor> Sensors { get; }
-        CommonRepository<Training> Trainings { get; }
-        CommonRepository<User> Users { get; }
+        IRepository<Excercise> Excercises { get; }
+        IRepository<Kick> Kicks { get; }
+        IRepository<Role> Roles { get; }
+        IRepository<Sensor> Sensors { get; }
+        IRepository<Training> Trainings { get; }
+        IRepository<User> Users { get; }
 
         void Commit();
         void Rollback();

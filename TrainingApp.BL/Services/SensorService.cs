@@ -15,9 +15,12 @@ namespace TrainingApp.BLL.Services
 
         private readonly IUnitOfWork Database;
 
-        public SensorService(IUnitOfWork database)
+        private readonly IMapper _mapper;
+
+        public SensorService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
+            _mapper = mapper;
         }
 
         public void DeleteItem(long? id)
@@ -50,7 +53,7 @@ namespace TrainingApp.BLL.Services
         {
             var sensors = Database.Sensors.GetAll();
 
-            var sensorDtos = Mapper.Map<IEnumerable<Sensor>, IEnumerable<SensorDTO>>(sensors);
+            var sensorDtos = _mapper.Map<IEnumerable<Sensor>, IEnumerable<SensorDTO>>(sensors);
 
             return sensorDtos;
         }
@@ -69,7 +72,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"There's no sensor with id = {id.Value}!", String.Empty);
             }
 
-            var sensorDto = Mapper.Map<Sensor, SensorDTO>(sensor);
+            var sensorDto = _mapper.Map<Sensor, SensorDTO>(sensor);
 
             return sensorDto;
         }
@@ -83,7 +86,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var sensor = Mapper.Map<SensorDTO, Sensor>(item);
+                var sensor = _mapper.Map<SensorDTO, Sensor>(item);
 
                 Database.Sensors.SaveItem(sensor);
                 Database.Commit();
@@ -103,7 +106,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var sensor = Mapper.Map<SensorDTO, Sensor>(item);
+                var sensor = _mapper.Map<SensorDTO, Sensor>(item);
 
                 Database.Sensors.UpdateItem(sensor);
                 Database.Commit();

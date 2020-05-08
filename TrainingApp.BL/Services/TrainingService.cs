@@ -14,9 +14,12 @@ namespace TrainingApp.BLL.Services
     {
         private readonly IUnitOfWork Database;
 
-        public TrainingService(IUnitOfWork database)
+        private readonly IMapper _mapper;
+
+        public TrainingService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
+            _mapper = mapper;
         }
 
         public void DeleteItem(long? id)
@@ -49,7 +52,7 @@ namespace TrainingApp.BLL.Services
         {
             var trainings = Database.Trainings.GetAll();
 
-            var trainingDtos = Mapper.Map<IEnumerable<Training>, IEnumerable<TrainingDTO>>(trainings);
+            var trainingDtos = _mapper.Map<IEnumerable<Training>, IEnumerable<TrainingDTO>>(trainings);
 
             return trainingDtos;
         }
@@ -68,7 +71,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"There's no training with id = {id.Value}!", String.Empty);
             }
 
-            var trainingDTO = Mapper.Map<Training, TrainingDTO>(training);
+            var trainingDTO = _mapper.Map<Training, TrainingDTO>(training);
 
             return trainingDTO;
         }
@@ -82,7 +85,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var training = Mapper.Map<TrainingDTO, Training>(item);
+                var training = _mapper.Map<TrainingDTO, Training>(item);
 
                 Database.Trainings.SaveItem(training);
                 Database.Commit();
@@ -103,7 +106,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var training = Mapper.Map<TrainingDTO, Training>(item);
+                var training = _mapper.Map<TrainingDTO, Training>(item);
 
                 Database.Trainings.UpdateItem(training);
                 Database.Commit();

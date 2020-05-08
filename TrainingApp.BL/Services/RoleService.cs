@@ -15,9 +15,12 @@ namespace TrainingApp.BLL.Services
 
         private readonly IUnitOfWork Database;
 
-        public RoleService(IUnitOfWork database)
+        private readonly IMapper _mapper;
+
+        public RoleService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
+            _mapper = mapper;
         }
 
         public void DeleteItem(long? id)
@@ -49,7 +52,7 @@ namespace TrainingApp.BLL.Services
         {
             var roles = Database.Roles.GetAll();
 
-            var roleDtos = Mapper.Map<IEnumerable<Role>, IEnumerable<RoleDTO>>(roles);
+            var roleDtos = _mapper.Map<IEnumerable<Role>, IEnumerable<RoleDTO>>(roles);
 
             return roleDtos;
         }
@@ -68,7 +71,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"There's no role with id = {id.Value}!", String.Empty);
             }
 
-            var roleDto = Mapper.Map<Role, RoleDTO>(role);
+            var roleDto = _mapper.Map<Role, RoleDTO>(role);
 
             return roleDto;
         }
@@ -82,7 +85,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var role = Mapper.Map<RoleDTO, Role>(item);
+                var role = _mapper.Map<RoleDTO, Role>(item);
 
                 Database.Roles.SaveItem(role);
                 Database.Commit();
@@ -101,7 +104,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var role = Mapper.Map<RoleDTO, Role>(item);
+                var role = _mapper.Map<RoleDTO, Role>(item);
 
                 Database.Roles.UpdateItem(role);
                 Database.Commit();

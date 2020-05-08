@@ -15,9 +15,12 @@ namespace TrainingApp.BLL.Services
 
         private readonly IUnitOfWork Database;
 
-        public UserService(IUnitOfWork database)
+        private readonly IMapper _mapper;
+
+        public UserService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
+            _mapper = mapper;
         }
 
         public void DeleteItem(long? id)
@@ -43,7 +46,7 @@ namespace TrainingApp.BLL.Services
         {
             var users = Database.Users.GetAll();
 
-            var userDtos = Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
+            var userDtos = _mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
 
             return userDtos;
         }
@@ -57,7 +60,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"There's no user with id = {id.Value}", String.Empty);
             }
 
-            var userDto = Mapper.Map<User, UserDTO>(user);
+            var userDto = _mapper.Map<User, UserDTO>(user);
 
             return userDto;
 
@@ -72,7 +75,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var user = Mapper.Map<UserDTO, User>(item);
+                var user = _mapper.Map<UserDTO, User>(item);
 
                 Database.Users.SaveItem(user);
 
@@ -92,7 +95,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var user = Mapper.Map<UserDTO, User>(item);
+                var user = _mapper.Map<UserDTO, User>(item);
 
                 Database.Users.UpdateItem(user);
 

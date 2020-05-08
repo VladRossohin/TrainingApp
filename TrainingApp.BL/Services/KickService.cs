@@ -15,9 +15,12 @@ namespace TrainingApp.BLL.Services
 
         private readonly IUnitOfWork Database;
 
-        public KickService(IUnitOfWork database)
+        private readonly IMapper _mapper;
+
+        public KickService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
+            _mapper = mapper;
         }
 
         public void DeleteItem(long? id)
@@ -43,7 +46,7 @@ namespace TrainingApp.BLL.Services
         {
             var kicks = Database.Kicks.GetAll();
 
-            var kickDtos = Mapper.Map<IEnumerable<Kick>, IEnumerable<KickDTO>>(kicks);
+            var kickDtos = _mapper.Map<IEnumerable<Kick>, IEnumerable<KickDTO>>(kicks);
 
             return kickDtos;
         }
@@ -62,7 +65,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"There's no kick with id = {id.Value}!", String.Empty);
             }
 
-            var kickDTO = Mapper.Map<Kick, KickDTO>(kick);
+            var kickDTO = _mapper.Map<Kick, KickDTO>(kick);
 
             return kickDTO;
         }
@@ -76,7 +79,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var kick = Mapper.Map<KickDTO, Kick>(item);
+                var kick = _mapper.Map<KickDTO, Kick>(item);
 
                 Database.Kicks.SaveItem(kick);
                 Database.Commit();
@@ -96,7 +99,7 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var kick = Mapper.Map<KickDTO, Kick>(item);
+                var kick = _mapper.Map<KickDTO, Kick>(item);
 
                 Database.Kicks.UpdateItem(kick);
                 Database.Commit();

@@ -14,7 +14,7 @@ namespace TrainingApp.DAL.Repositories
 
         public UserRepository(TrainingDBContext database) : base(database)
         {
-
+            Database = database;
         }
 
         public override IEnumerable<User> GetAll()

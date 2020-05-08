@@ -1,46 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http.Results;
 using AutoMapper;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using TrainingApp.Api.Models;
 using TrainingApp.BLL.DTO;
 using TrainingApp.BLL.Interfaces;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TrainingApp.Api.Controllers
 {
-    [EnableCors]
-    [Route("api")]
-    public class UsersController : ApiController
+    [ApiController]
+    [Route("api/users")]
+    public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
+        private readonly IMapper _mapper;
+
+        public UsersController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        [Route("users")]
-        public IHttpActionResult GetAllUsers()
+        public ActionResult GetAllUsers()
         {
             var userDtos = _userService.GetAll();
 
-            var users = Mapper.Map<IEnumerable<UserDTO>, IEnumerable<UserModel>>(userDtos);
+            var users = _mapper.Map<IEnumerable<UserDTO>, IEnumerable<UserModel>>(userDtos);
 
-            return Json(users);
+            return Ok(users);
         }
 
-        [HttpGet]
-        [Route("users/{id?}")]
-        public IHttpActionResult GetUserById([FromUri]long? id)
+        [HttpGet("{id}")]
+        public ActionResult GetUserById(long? id)
         {
             if (!id.HasValue)
             {
@@ -54,15 +50,14 @@ namespace TrainingApp.Api.Controllers
                 return NotFound();
             }
 
-            var user = Mapper.Map<UserDTO, UserModel>(userDto);
+            var user = _mapper.Map<UserDTO, UserModel>(userDto);
 
-            return Json(user);
+            return Ok(user);
         }
 
 
-        [HttpPost]
-        [Route("users/create")]
-        public IHttpActionResult CreateUser([FromBody]UserModel user)
+        [HttpPost("create")]
+        public ActionResult CreateUser([FromBody]UserModel user)
         {
             if (user == null)
             {
@@ -71,20 +66,19 @@ namespace TrainingApp.Api.Controllers
 
             try
             {
-                var userDto = Mapper.Map<UserModel, UserDTO>(user);
+                var userDto = _mapper.Map<UserModel, UserDTO>(user);
                 _userService.SaveItem(userDto);
 
                 return Ok("The user was succesfully created!");
             } catch
             {
-                return InternalServerError(new Exception("An error was occured!"));
+                return StatusCode(500, "An error has occured!");
             }
 
         }
 
-        [HttpPut]
-        [Route("users/{id?}")]
-        public IHttpActionResult UpdateUser([FromUri]long? id, [FromBody]UserModel user)
+        [HttpPut("{id?}")]
+        public ActionResult UpdateUser(long? id, [FromBody]UserModel user)
         {
             if (!id.HasValue)
             {
@@ -104,7 +98,7 @@ namespace TrainingApp.Api.Controllers
                     return NotFound();
                 }
 
-                Mapper.Map(user, userDto);
+                _mapper.Map(user, userDto);
 
                 userDto.Id = id.Value;
 
@@ -114,13 +108,12 @@ namespace TrainingApp.Api.Controllers
 
             } catch
             {
-                return InternalServerError(new Exception("An error was occured!"));
+                return StatusCode(500, "An error was occured!");
             }
         }
 
-        [HttpDelete]
-        [Route("users/{id?}")]
-        public IHttpActionResult DeleteUser([FromUri]long? id) 
+        [HttpDelete("{id?}")]
+        public ActionResult DeleteUser(long? id) 
         {
             if (!id.HasValue)
             {
@@ -141,7 +134,7 @@ namespace TrainingApp.Api.Controllers
                 return Ok($"The user {userDto.Name} {userDto.LastName} has been succesfully deleted!");
             } catch
             {
-                return InternalServerError(new Exception("An error was occured!"));
+                return StatusCode(500, "An error was occured!");
             }
         }
     }

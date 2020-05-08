@@ -68,3 +68,15 @@ D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Train
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\TrainingApp.BLL.pdb
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\TrainingApp.DAL.pdb
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\TrainingApp.Api.csproj.CopyComplete
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\TrainingApp.Api.csproj.CoreCompileInputs.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\TrainingApp.Api.MvcApplicationPartsAssemblyInfo.cache
