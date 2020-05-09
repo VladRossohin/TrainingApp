@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
@@ -36,7 +38,7 @@ namespace TrainingApp.DAL.Repositories
 
         public User GetItem(long id)
         {
-            var user = Database.Users.Find(id);
+            var user = Database.Users.Include("Role").Include("Trainings").Where(us => us.Id == id).FirstOrDefault();
 
             return user;
         }

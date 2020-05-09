@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
@@ -36,7 +37,7 @@ namespace TrainingApp.DAL.Repositories
 
         public Kick GetItem(long id)
         {
-            var kick = Database.Kicks.Find(id);
+            var kick = Database.Kicks.Include("Exercise").Where(k => k.Id == id).FirstOrDefault();
 
             return kick;
         }

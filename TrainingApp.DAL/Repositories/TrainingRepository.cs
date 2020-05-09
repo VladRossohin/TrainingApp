@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
 
@@ -35,7 +36,7 @@ namespace TrainingApp.DAL.Repositories
 
         public Training GetItem(long id)
         {
-            var training = Database.Trainings.Find(id);
+            var training = Database.Trainings.Include("User").Include("Exercises").Where(tr => tr.Id == id).FirstOrDefault();
 
             return training;
         }

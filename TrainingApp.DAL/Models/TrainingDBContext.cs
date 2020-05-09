@@ -39,7 +39,7 @@ namespace TrainingApp.DAL.Models
                 entity.Property(e => e.StartDateTime).HasColumnType("datetime2(3)");
 
                 entity.HasOne(d => d.Sensor)
-                    .WithMany(p => p.Exercis)
+                    .WithMany(p => p.Exercises)
                     .HasForeignKey(d => d.SensorId)
                     .HasConstraintName("FK_Excercises_Sensors");
 

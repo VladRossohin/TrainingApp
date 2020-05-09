@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
@@ -19,7 +20,7 @@ namespace TrainingApp.DAL.Repositories
 
         public void DeleteItem(long id)
         {
-            var exercise = Database.Exercises.Find(id);
+            var exercise = Database.Exercises.Include("Sensor").Include("Kicks").Where(exer => exer.Id == id).FirstOrDefault();
 
             if (exercise != null)
             {
