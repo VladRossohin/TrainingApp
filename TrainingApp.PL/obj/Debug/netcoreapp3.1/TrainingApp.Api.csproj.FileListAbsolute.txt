@@ -78,5 +78,8 @@ D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Syste
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\bin\Debug\netcoreapp3.1\Bricelam.EntityFrameworkCore.Pluralizer.dll
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\TrainingApp.Api.csproj.CoreCompileInputs.cache
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\TrainingApp.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.PL\obj\Debug\netcoreapp3.1\EFCorePluralizer.cs

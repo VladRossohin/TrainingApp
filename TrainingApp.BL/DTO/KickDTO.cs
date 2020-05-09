@@ -6,7 +6,6 @@ namespace TrainingApp.BLL.DTO
     {
         public long Id { get; set; }
         public long ExcerciseId { get; set; }
-        public long SensorId { get; set; }
         public DateTime KickDateTime { get; set; }
         public double? KickPower { get; set; }
         public double? ReactionSpeed { get; set; }

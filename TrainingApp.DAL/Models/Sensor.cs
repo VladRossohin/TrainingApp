@@ -7,15 +7,13 @@ namespace TrainingApp.DAL.Models
     {
         public Sensor()
         {
-            Excercise = new HashSet<Excercise>();
-            Kick = new HashSet<Kick>();
+            Exercis = new HashSet<Exercise>();
         }
 
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<Excercise> Excercise { get; set; }
-        public virtual ICollection<Kick> Kick { get; set; }
+        public virtual ICollection<Exercise> Exercis { get; set; }
     }
 }

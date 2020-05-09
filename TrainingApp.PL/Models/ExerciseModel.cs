@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TrainingApp.Api.Models
 {
-    public class ExcerciseModel
+    public class ExerciseModel
     {
         public long Id { get; set; }
         public long TrainingId { get; set; }

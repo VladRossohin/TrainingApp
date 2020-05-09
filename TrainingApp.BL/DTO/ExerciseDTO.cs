@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TrainingApp.BLL.DTO
 {
-    public class ExcerciseDTO
+    public class ExerciseDTO
     {
         public long Id { get; set; }
         public long TrainingId { get; set; }

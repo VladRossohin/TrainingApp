@@ -1,33 +1,53 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
 
+
 namespace TrainingApp.DAL.Repositories
 {
-    public class TrainingRepository : CommonRepository<Training>
+    public class TrainingRepository : IRepository<Training>
     {
+
         private readonly TrainingDBContext Database;
 
-        public TrainingRepository(TrainingDBContext database) : base(database)
+        public TrainingRepository(TrainingDBContext database)
         {
-
+            Database = database;
         }
 
-        public override IEnumerable<Training> GetAll()
+        public void DeleteItem(long id)
         {
-            return Database.Training;
+            var training = Database.Trainings.Find(id);
+
+            if (training != null)
+            {
+                Database.Trainings.Remove(training);
+            }
         }
 
-        public override Training GetItem(long? id)
+        public IEnumerable<Training> GetAll()
         {
-            var training = Database.Training.Include("IdNavigation").Include("Excercise").Where(tr => tr.Id == id.Value).FirstOrDefault();
+            var trainings = Database.Trainings;
+
+            return trainings;
+        }
+
+        public Training GetItem(long id)
+        {
+            var training = Database.Trainings.Find(id);
 
             return training;
         }
 
+        public void SaveItem(Training item)
+        {
+            Database.Trainings.Add(item);
+        }
+
+        public void UpdateItem(Training item)
+        {
+            Database.Entry(item).State = EntityState.Modified;
+        }
     }
 }

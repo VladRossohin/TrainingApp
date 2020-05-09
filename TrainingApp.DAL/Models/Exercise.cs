@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace TrainingApp.DAL.Models
 {
-    public partial class Excercise
+    public partial class Exercise
     {
-        public Excercise()
+        public Exercise()
         {
-            Kick = new HashSet<Kick>();
+            Kicks = new HashSet<Kick>();
         }
 
         public long Id { get; set; }
@@ -18,6 +18,6 @@ namespace TrainingApp.DAL.Models
 
         public virtual Sensor Sensor { get; set; }
         public virtual Training Training { get; set; }
-        public virtual ICollection<Kick> Kick { get; set; }
+        public virtual ICollection<Kick> Kicks { get; set; }
     }
 }

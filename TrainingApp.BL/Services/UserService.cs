@@ -23,6 +23,7 @@ namespace TrainingApp.BLL.Services
             _mapper = mapper;
         }
 
+
         public void DeleteItem(long? id)
         {
             if (!id.HasValue)
@@ -37,7 +38,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"User with id = {id.Value} was not found!", String.Empty);
             }
 
-            Database.Users.DeleteItem(user);
+            Database.Users.DeleteItem(id.Value);
 
             Database.Commit();
         }
@@ -80,7 +81,8 @@ namespace TrainingApp.BLL.Services
                 Database.Users.SaveItem(user);
 
                 Database.Commit();
-            } catch
+            }
+            catch
             {
                 throw new ValidationException("An error has occured!", String.Empty);
             }

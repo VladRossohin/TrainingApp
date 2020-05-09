@@ -42,7 +42,7 @@ namespace TrainingApp.PL
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ITrainingService, TrainingService>();
-            services.AddTransient<IExcerciseService, ExcerciseService>();
+            services.AddTransient<IExerciseService, ExerciseService>();
             services.AddTransient<IKickService, KickService>();
             services.AddTransient<ISensorService, SensorService>();
 

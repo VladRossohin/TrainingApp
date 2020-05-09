@@ -23,6 +23,7 @@ namespace TrainingApp.BLL.Services
             _mapper = mapper;
         }
 
+
         public void DeleteItem(long? id)
         {
             if (!id.HasValue)
@@ -39,10 +40,11 @@ namespace TrainingApp.BLL.Services
                     throw new ValidationException($"There's no role with id = {id.Value}!", String.Empty);
                 }
 
-                Database.Roles.DeleteItem(role);
+                Database.Roles.DeleteItem(id.Value);
 
                 Database.Commit();
-            } catch
+            }
+            catch
             {
                 throw new ValidationException("An error has occured!", String.Empty);
             }
@@ -89,7 +91,8 @@ namespace TrainingApp.BLL.Services
 
                 Database.Roles.SaveItem(role);
                 Database.Commit();
-            } catch
+            }
+            catch
             {
                 throw new ValidationException("An error has occured!", String.Empty);
             }

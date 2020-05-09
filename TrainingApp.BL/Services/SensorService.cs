@@ -23,6 +23,7 @@ namespace TrainingApp.BLL.Services
             _mapper = mapper;
         }
 
+
         public void DeleteItem(long? id)
         {
             if (!id.HasValue)
@@ -39,7 +40,7 @@ namespace TrainingApp.BLL.Services
                     throw new ValidationException($"There's no sensor with id = {id.Value}!", String.Empty);
                 }
 
-                Database.Sensors.DeleteItem(sensor);
+                Database.Sensors.DeleteItem(id.Value);
 
                 Database.Commit();
             }

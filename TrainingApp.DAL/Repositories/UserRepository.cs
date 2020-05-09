@@ -1,32 +1,54 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using TrainingApp.DAL.Interfaces;
 using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class UserRepository : CommonRepository<User>
+    public class UserRepository : IRepository<User>
     {
+
         private readonly TrainingDBContext Database;
 
-        public UserRepository(TrainingDBContext database) : base(database)
+        public UserRepository(TrainingDBContext database)
         {
             Database = database;
         }
 
-        public override IEnumerable<User> GetAll()
+        public void DeleteItem(long id)
         {
-            return Database.User;
+            var user = Database.Users.Find(id);
+
+            if (user != null)
+            {
+                Database.Users.Remove(user);
+            }
         }
 
-        public override User GetItem(long? id)
+        public IEnumerable<User> GetAll()
         {
-            var user = Database.User.Include("Role").Include("Training").Where(u => u.Id == id.Value).FirstOrDefault();
+            var users = Database.Users;
+
+            return users;
+        }
+
+        public User GetItem(long id)
+        {
+            var user = Database.Users.Find(id);
 
             return user;
+        }
+
+        public void SaveItem(User item)
+        {
+            Database.Users.Add(item);
+        }
+
+        public void UpdateItem(User item)
+        {
+            Database.Entry(item).State = EntityState.Modified;
         }
     }
 }

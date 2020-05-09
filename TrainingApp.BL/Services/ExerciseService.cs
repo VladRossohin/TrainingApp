@@ -10,18 +10,19 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.BLL.Services
 {
-    public class ExcerciseService : IExcerciseService
+    public class ExerciseService : IExerciseService
     {
 
         private readonly IUnitOfWork Database;
 
         private readonly IMapper _mapper;
 
-        public ExcerciseService(IUnitOfWork database, IMapper mapper)
+        public ExerciseService(IUnitOfWork database, IMapper mapper)
         {
             Database = database;
             _mapper = mapper;
         }
+
 
         public void DeleteItem(long? id)
         {
@@ -32,14 +33,14 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var excercise = Database.Excercises.GetItem(id.Value);
+                var exercise = Database.Exercises.GetItem(id.Value);
 
-                if (excercise == null)
+                if (exercise == null)
                 {
                     throw new ValidationException($"There's no excercise with id = {id.Value}!", String.Empty);
                 }
 
-                Database.Excercises.DeleteItem(excercise);
+                Database.Exercises.DeleteItem(id.Value);
 
                 Database.Commit();
             }
@@ -49,35 +50,35 @@ namespace TrainingApp.BLL.Services
             }
         }
 
-        public IEnumerable<ExcerciseDTO> GetAll()
+        public IEnumerable<ExerciseDTO> GetAll()
         {
-            var excercises = Database.Excercises.GetAll();
+            var exercises = Database.Exercises.GetAll();
 
-            var excerciseDtos = _mapper.Map<IEnumerable<Excercise>, IEnumerable<ExcerciseDTO>>(excercises);
+            var exerciseDtos = _mapper.Map<IEnumerable<Exercise>, IEnumerable<ExerciseDTO>>(exercises);
 
-            return excerciseDtos;
+            return exerciseDtos;
         }
 
-        public ExcerciseDTO GetItem(long? id)
+        public ExerciseDTO GetItem(long? id)
         {
             if (!id.HasValue)
             {
                 throw new ValidationException("The id value is not set!", String.Empty);
             }
 
-            var excercise = Database.Excercises.GetItem(id.Value);
+            var exercise = Database.Exercises.GetItem(id.Value);
 
-            if (excercise == null)
+            if (exercise == null)
             {
                 throw new ValidationException($"There's no excercise with id = {id.Value}!", String.Empty);
             }
 
-            var excerciseDto = _mapper.Map<Excercise, ExcerciseDTO>(excercise);
+            var exerciseDto = _mapper.Map<Exercise, ExerciseDTO>(exercise);
 
-            return excerciseDto;
+            return exerciseDto;
         }
 
-        public void SaveItem(ExcerciseDTO item)
+        public void SaveItem(ExerciseDTO item)
         {
             if (item == null)
             {
@@ -86,9 +87,9 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var excercise = _mapper.Map<ExcerciseDTO, Excercise>(item);
+                var excercise = _mapper.Map<ExerciseDTO, Exercise>(item);
 
-                Database.Excercises.SaveItem(excercise);
+                Database.Exercises.SaveItem(excercise);
                 Database.Commit();
             }
             catch
@@ -97,7 +98,7 @@ namespace TrainingApp.BLL.Services
             }
         }
 
-        public void UpdateItem(ExcerciseDTO item)
+        public void UpdateItem(ExerciseDTO item)
         {
             if (item == null)
             {
@@ -106,9 +107,9 @@ namespace TrainingApp.BLL.Services
 
             try
             {
-                var excercise = _mapper.Map<ExcerciseDTO, Excercise>(item);
+                var exercise = _mapper.Map<ExerciseDTO, Exercise>(item);
 
-                Database.Excercises.UpdateItem(excercise);
+                Database.Exercises.UpdateItem(exercise);
                 Database.Commit();
             }
             catch

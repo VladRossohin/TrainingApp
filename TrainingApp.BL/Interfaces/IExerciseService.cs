@@ -5,7 +5,7 @@ using TrainingApp.BLL.DTO;
 
 namespace TrainingApp.BLL.Interfaces
 {
-    public interface IExcerciseService : IService<ExcerciseDTO>
+    public interface IExerciseService : IService<ExerciseDTO>
     {
     }
 }

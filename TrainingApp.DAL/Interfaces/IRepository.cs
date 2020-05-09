@@ -4,12 +4,14 @@ using System.Text;
 
 namespace TrainingApp.DAL.Interfaces
 {
-    public interface IRepository<T> : ICommonRepository<T>
+    public interface IRepository<T>
     {
-        abstract T GetItem(long? id);
-        abstract IEnumerable<T> GetAll();
+        T GetItem(long id);
+        IEnumerable<T> GetAll();
 
-    
+        void UpdateItem(T item);
+        void SaveItem(T item);
+        void DeleteItem(long id);
 
     }
 }

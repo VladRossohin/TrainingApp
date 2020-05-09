@@ -7,15 +7,15 @@ namespace TrainingApp.DAL.Models
     {
         public Training()
         {
-            Excercise = new HashSet<Excercise>();
+            Exercises = new HashSet<Exercise>();
         }
 
         public long Id { get; set; }
-        public long UserId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public long UserId { get; set; }
 
-        public virtual User IdNavigation { get; set; }
-        public virtual ICollection<Excercise> Excercise { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
     }
 }

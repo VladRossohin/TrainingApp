@@ -10,7 +10,7 @@ namespace TrainingApp.DAL.Repositories
     {
         private readonly TrainingDBContext _dBContext;
 
-        private readonly ExcerciseRepository _excerciseRepository;
+        private readonly ExerciseRepository _exerciseRepository;
         private readonly KickRepository _kickRepository;
         private readonly RoleRepository _roleRepository;
         private readonly SensorRepository _sensorRepository;
@@ -22,7 +22,7 @@ namespace TrainingApp.DAL.Repositories
             _dBContext = dBContext;
         }
 
-        public IRepository<Excercise> Excercises => _excerciseRepository ?? new ExcerciseRepository(_dBContext);
+        public IRepository<Exercise> Exercises => _exerciseRepository ?? new ExerciseRepository(_dBContext);
 
         public IRepository<Kick> Kicks => _kickRepository ?? new KickRepository(_dBContext);
 

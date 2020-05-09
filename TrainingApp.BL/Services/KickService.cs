@@ -23,6 +23,7 @@ namespace TrainingApp.BLL.Services
             _mapper = mapper;
         }
 
+
         public void DeleteItem(long? id)
         {
             if (!id.HasValue)
@@ -37,7 +38,7 @@ namespace TrainingApp.BLL.Services
                 throw new ValidationException($"The kick with id = {id.Value} was not found!", String.Empty);
             }
 
-            Database.Kicks.DeleteItem(kick);
+            Database.Kicks.DeleteItem(id.Value);
 
             Database.Commit();
         }

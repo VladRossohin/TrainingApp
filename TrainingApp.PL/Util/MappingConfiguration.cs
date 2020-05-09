@@ -19,14 +19,14 @@ namespace TrainingApp.Api.Util
 
             CreateMap<Training, TrainingDTO>().ReverseMap();
 
-            CreateMap<Excercise, ExcerciseDTO>().ReverseMap();
+            CreateMap<Exercise, ExerciseDTO>().ReverseMap();
 
             CreateMap<Role, RoleDTO>().ReverseMap();
 
             CreateMap<Kick, KickDTO>().ReverseMap();
 
             CreateMap<UserDTO, UserModel>().ReverseMap();
-            
+
         }
     }
 }

@@ -15,12 +15,12 @@ namespace TrainingApp.DAL.Models
         {
         }
 
-        public virtual DbSet<Excercise> Excercise { get; set; }
-        public virtual DbSet<Kick> Kick { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Sensor> Sensor { get; set; }
-        public virtual DbSet<Training> Training { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Exercise> Exercises { get; set; }
+        public virtual DbSet<Kick> Kicks { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Sensor> Sensors { get; set; }
+        public virtual DbSet<Training> Trainings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,92 +32,72 @@ namespace TrainingApp.DAL.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Excercise>(entity =>
+            modelBuilder.Entity<Exercise>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.EndDateTime).HasColumnType("datetime2(3)");
 
-                entity.Property(e => e.EndDateTime).HasColumnType("datetime");
-
-                entity.Property(e => e.StartDateTime).HasColumnType("datetime");
+                entity.Property(e => e.StartDateTime).HasColumnType("datetime2(3)");
 
                 entity.HasOne(d => d.Sensor)
-                    .WithMany(p => p.Excercise)
+                    .WithMany(p => p.Exercis)
                     .HasForeignKey(d => d.SensorId)
-                    .HasConstraintName("FK_Excercise_Sensor");
+                    .HasConstraintName("FK_Excercises_Sensors");
 
                 entity.HasOne(d => d.Training)
-                    .WithMany(p => p.Excercise)
+                    .WithMany(p => p.Exercises)
                     .HasForeignKey(d => d.TrainingId)
-                    .HasConstraintName("FK_Excercise_Training");
+                    .HasConstraintName("FK_Excercises_Trainings");
             });
 
             modelBuilder.Entity<Kick>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.KickDateTime).HasColumnType("datetime2(3)");
 
-                entity.Property(e => e.KickDateTime).HasColumnType("datetime");
-
-                entity.Property(e => e.KickPower).HasColumnType("decimal(18, 0)");
-
-                entity.Property(e => e.ReactionSpeed).HasColumnType("decimal(18, 0)");
-
-                entity.HasOne(d => d.Excercise)
-                    .WithMany(p => p.Kick)
-                    .HasForeignKey(d => d.ExcerciseId)
-                    .HasConstraintName("FK_Kick_Excercise");
-
-                entity.HasOne(d => d.Sensor)
-                    .WithMany(p => p.Kick)
-                    .HasForeignKey(d => d.SensorId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Kick_Sensor");
+                entity.HasOne(d => d.Exercise)
+                    .WithMany(p => p.Kicks)
+                    .HasForeignKey(d => d.ExerciseId)
+                    .HasConstraintName("FK_Kicks_Excercises");
             });
 
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(20)
+                    .HasMaxLength(15)
                     .IsUnicode(false);
             });
 
             modelBuilder.Entity<Sensor>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Description)
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(64)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 
             modelBuilder.Entity<Training>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Description)
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(255)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.Training)
-                    .HasForeignKey<Training>(d => d.Id)
-                    .HasConstraintName("FK_Training_User");
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Trainings)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_Trainings_Users");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -129,9 +109,9 @@ namespace TrainingApp.DAL.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Role)
-                    .WithMany(p => p.User)
+                    .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_User_Role");
+                    .HasConstraintName("FK_Users_Roles");
             });
 
             OnModelCreatingPartial(modelBuilder);
