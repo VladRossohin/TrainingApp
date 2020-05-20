@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TrainingApp.DAL\\obj",
+    "\\TrainingApp.DAL",
+    "\\TrainingApp.DAL\\Repositories",
     "\\TrainingApp.PL"
   ],
+  "SelectedNode": "\\TrainingApp.DAL\\Repositories",
   "PreviewInSolutionExplorer": false
 }
