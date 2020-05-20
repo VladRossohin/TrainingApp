@@ -33,6 +33,20 @@ namespace TrainingApp.Api.Controllers
             return Ok(kicks);
         }
 
+        [HttpGet("exercise/{id}")]
+        public ActionResult GetKicksByExerciseId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest("The id value is not set!");
+            }
+
+            var kickDtos = _kickService.GetByExerciseId(id.Value);
+            var kicks = _mapper.Map<IEnumerable<KickDTO>, IEnumerable<KickModel>>(kickDtos);
+
+            return Ok(kicks);
+        }
+
         [HttpGet("{id}")]
         public ActionResult GetKickById(long? id)
         {

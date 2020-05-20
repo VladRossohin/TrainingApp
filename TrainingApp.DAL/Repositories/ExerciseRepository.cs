@@ -20,7 +20,7 @@ namespace TrainingApp.DAL.Repositories
 
         public void DeleteItem(long id)
         {
-            var exercise = Database.Exercises.Include("Sensor").Include("Kicks").Where(exer => exer.Id == id).FirstOrDefault();
+            var exercise = Database.Exercises.Where(exer => exer.Id == id).FirstOrDefault();
 
             if (exercise != null)
             {
@@ -30,14 +30,14 @@ namespace TrainingApp.DAL.Repositories
 
         public IEnumerable<Exercise> GetAll()
         {
-            var exercises = Database.Exercises;
+            var exercises = Database.Exercises.Include("Sensor").AsEnumerable();
 
             return exercises;
         }
 
         public Exercise GetItem(long id)
         {
-            var exercise = Database.Exercises.Find(id);
+            var exercise = Database.Exercises.Include("Sensor").Where(exer => exer.Id == id).FirstOrDefault();
 
             return exercise;
         }

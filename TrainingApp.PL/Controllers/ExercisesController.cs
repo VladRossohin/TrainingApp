@@ -12,14 +12,14 @@ using TrainingApp.BLL.Services;
 namespace TrainingApp.Api.Controllers
 {
     [ApiController]
-    [Route("api/excercises")]
-    public class ExcercisesController : ControllerBase
+    [Route("api/exercises")]
+    public class ExercisesController : ControllerBase
     {
         private readonly IExerciseService _exerciseService;
 
         private readonly IMapper _mapper;
 
-        public ExcercisesController(IExerciseService exerciseService, IMapper mapper)
+        public ExercisesController(IExerciseService exerciseService, IMapper mapper)
         {
             _exerciseService = exerciseService;
             _mapper = mapper;
