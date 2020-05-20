@@ -55,6 +55,36 @@ namespace TrainingApp.Api.Controllers
             return Ok(exercise);
         }
 
+        [HttpGet("training/{id}")]
+        public ActionResult GetExercisesByTrainingId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest("The id value is not set!");
+            }
+
+            var exerciseDtos = _exerciseService.GetByTrainingId(id.Value);
+
+            var exercises = _mapper.Map<IEnumerable<ExerciseDTO>, IEnumerable<ExerciseModel>>(exerciseDtos);
+
+            return Ok(exercises);
+        }
+
+        [HttpGet("sensor/{id}")]
+        public ActionResult GetExercisesBySensorId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest("The id value is not set!");
+            }
+
+            var exerciseDtos = _exerciseService.GetBySensorId(id.Value);
+
+            var exercises = _mapper.Map<IEnumerable<ExerciseDTO>, IEnumerable<ExerciseModel>>(exerciseDtos);
+
+            return Ok(exercises);
+        }
+
         [HttpPost("create")]
         public ActionResult CreateExercise([FromBody]ExerciseModel exercise)
         {

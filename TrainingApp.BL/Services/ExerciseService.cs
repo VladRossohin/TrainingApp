@@ -59,6 +59,34 @@ namespace TrainingApp.BLL.Services
             return exerciseDtos;
         }
 
+        public IEnumerable<ExerciseDTO> GetBySensorId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                throw new ValidationException("The id value is not set!", String.Empty);
+            }
+
+            var exercises = Database.Exercises.GetBySensorId(id.Value);
+
+            var exerciseDtos = _mapper.Map<IEnumerable<Exercise>, IEnumerable<ExerciseDTO>>(exercises);
+
+            return exerciseDtos;
+        }
+
+        public IEnumerable<ExerciseDTO> GetByTrainingId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                throw new ValidationException("The id value is not set!", String.Empty);
+            }
+
+            var exercises = Database.Exercises.GetByTrainingId(id.Value);
+
+            var exerciseDtos = _mapper.Map<IEnumerable<Exercise>, IEnumerable<ExerciseDTO>>(exercises);
+
+            return exerciseDtos;
+        }
+
         public ExerciseDTO GetItem(long? id)
         {
             if (!id.HasValue)

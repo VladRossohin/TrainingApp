@@ -22,7 +22,7 @@ namespace TrainingApp.DAL.Repositories
             _dBContext = dBContext;
         }
 
-        public IRepository<Exercise> Exercises => _exerciseRepository ?? new ExerciseRepository(_dBContext);
+        public IExerciseRepository Exercises => _exerciseRepository ?? new ExerciseRepository(_dBContext);
 
         public IKickRepository Kicks => _kickRepository ?? new KickRepository(_dBContext);
 
