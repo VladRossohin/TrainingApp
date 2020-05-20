@@ -25,6 +25,7 @@
     "chartjs": "^0.3.24",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "vendor": "^1.7.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
