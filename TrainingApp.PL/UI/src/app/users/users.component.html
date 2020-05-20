@@ -1,0 +1,54 @@
+<h1>List of users</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="addUser()" />
+
+<table *ngIf="tableMode; else create" class="table table-striped" >
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td></td>    
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <ng-template [ngIf]="user?.id != u.id" [ngIfElse] = "edit">
+                <td>{{u.id}}</td>
+                <td>{{u.name}}</td>
+                <td>{{u.lastName}}</td>
+                <td>
+                    <button class="btn btn-primaty" (click)="editUser(u)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteUser(u)">Delete</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="user.name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="user.lastName" class="form-control" />
+    </td>
+    <td>
+            <input type="button" value="Save" (click)="saveUser()" class="btn btn-sm btn-success" />
+            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+
+<ng-template #create>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="user.name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="user.lastName" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Save" (click)="saveUser()" class="btn btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

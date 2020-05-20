@@ -1,9 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\TrainingApp.Api",
-    "\\TrainingApp.BL\\Services",
-    "\\TrainingApp.DAL\\Repositories"
+    ""
   ],
   "SelectedNode": "\\TrainingApp.sln",
   "PreviewInSolutionExplorer": false
