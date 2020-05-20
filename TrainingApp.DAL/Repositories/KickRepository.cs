@@ -8,7 +8,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class KickRepository : IRepository<Kick>
+    public class KickRepository : IKickRepository
     {
 
         private readonly TrainingDBContext Database;
@@ -31,6 +31,13 @@ namespace TrainingApp.DAL.Repositories
         public IEnumerable<Kick> GetAll()
         {
             var kicks = Database.Kicks;
+
+            return kicks;
+        }
+
+        public IEnumerable<Kick> GetByExerciseId(long id)
+        {
+            var kicks = Database.Kicks.Include("Exercise").Where(k => k.ExerciseId == id).AsEnumerable();
 
             return kicks;
         }

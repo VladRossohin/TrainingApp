@@ -52,6 +52,20 @@ namespace TrainingApp.BLL.Services
             return kickDtos;
         }
 
+        public IEnumerable<KickDTO> GetByExerciseId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                throw new ValidationException("The id value is not set!", String.Empty);
+            }
+
+            var kicks = Database.Kicks.GetByExerciseId(id.Value);
+
+            var kickDtos = _mapper.Map<IEnumerable<Kick>, IEnumerable<KickDTO>>(kicks);
+
+            return kickDtos;
+        }
+
         public KickDTO GetItem(long? id)
         {
             if (!id.HasValue)

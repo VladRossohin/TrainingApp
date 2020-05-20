@@ -24,7 +24,7 @@ namespace TrainingApp.DAL.Repositories
 
         public IRepository<Exercise> Exercises => _exerciseRepository ?? new ExerciseRepository(_dBContext);
 
-        public IRepository<Kick> Kicks => _kickRepository ?? new KickRepository(_dBContext);
+        public IKickRepository Kicks => _kickRepository ?? new KickRepository(_dBContext);
 
         public IRepository<Role> Roles => _roleRepository ?? new RoleRepository(_dBContext);
 

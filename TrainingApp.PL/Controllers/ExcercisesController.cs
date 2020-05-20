@@ -6,19 +6,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrainingApp.Api.Models;
 using TrainingApp.BLL.DTO;
+using TrainingApp.BLL.Interfaces;
 using TrainingApp.BLL.Services;
 
 namespace TrainingApp.Api.Controllers
 {
     [ApiController]
     [Route("api/excercises")]
-    public class ExcerciseController : ControllerBase
+    public class ExcercisesController : ControllerBase
     {
-        private readonly ExerciseService _exerciseService;
+        private readonly IExerciseService _exerciseService;
 
         private readonly IMapper _mapper;
 
-        public ExcerciseController(ExerciseService exerciseService, IMapper mapper)
+        public ExcercisesController(IExerciseService exerciseService, IMapper mapper)
         {
             _exerciseService = exerciseService;
             _mapper = mapper;

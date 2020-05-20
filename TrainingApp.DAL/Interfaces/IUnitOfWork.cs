@@ -8,7 +8,7 @@ namespace TrainingApp.DAL.Interfaces
     public interface IUnitOfWork
     {
         IRepository<Exercise> Exercises { get; }
-        IRepository<Kick> Kicks { get; }
+        IKickRepository Kicks { get; }
         IRepository<Role> Roles { get; }
         IRepository<Sensor> Sensors { get; }
         IRepository<Training> Trainings { get; }

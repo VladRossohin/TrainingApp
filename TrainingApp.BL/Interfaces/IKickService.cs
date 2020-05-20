@@ -7,5 +7,6 @@ namespace TrainingApp.BLL.Interfaces
 {
     public interface IKickService : IService<KickDTO>
     {
+        IEnumerable<KickDTO> GetByExerciseId(long? id);
     }
 }
