@@ -11,7 +11,7 @@ namespace TrainingApp.DAL.Interfaces
         IKickRepository Kicks { get; }
         IRepository<Role> Roles { get; }
         IRepository<Sensor> Sensors { get; }
-        IRepository<Training> Trainings { get; }
+        ITrainingRepository Trainings { get; }
         IRepository<User> Users { get; }
 
         void Commit();

@@ -58,6 +58,20 @@ namespace TrainingApp.BLL.Services
             return trainingDtos;
         }
 
+        public IEnumerable<TrainingDTO> GetByUserId(long? id)
+        {
+            if (!id.HasValue)
+            {
+                throw new ValidationException("The id value is not set!", String.Empty);
+            }
+
+            var trainings = Database.Trainings.GetByUserId(id.Value);
+
+            var trainingDtos = _mapper.Map<IEnumerable<Training>, IEnumerable<TrainingDTO>>(trainings);
+
+            return trainingDtos;
+        }
+
         public TrainingDTO GetItem(long? id)
         {
             if (!id.HasValue)

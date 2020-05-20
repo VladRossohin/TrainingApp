@@ -7,5 +7,6 @@ namespace TrainingApp.BLL.Interfaces
 {
     public interface ITrainingService : IService<TrainingDTO>
     {
+        IEnumerable<TrainingDTO> GetByUserId(long? id);
     }
 }

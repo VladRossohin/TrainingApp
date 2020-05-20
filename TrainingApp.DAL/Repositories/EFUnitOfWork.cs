@@ -30,7 +30,7 @@ namespace TrainingApp.DAL.Repositories
 
         public IRepository<Sensor> Sensors => _sensorRepository ?? new SensorRepository(_dBContext);
 
-        public IRepository<Training> Trainings => _trainingRepository ?? new TrainingRepository(_dBContext);
+        public ITrainingRepository Trainings => _trainingRepository ?? new TrainingRepository(_dBContext);
 
         public IRepository<User> Users => _userRepository ?? new UserRepository(_dBContext);
 

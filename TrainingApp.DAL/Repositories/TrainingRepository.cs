@@ -7,7 +7,7 @@ using TrainingApp.DAL.Models;
 
 namespace TrainingApp.DAL.Repositories
 {
-    public class TrainingRepository : IRepository<Training>
+    public class TrainingRepository : ITrainingRepository
     {
 
         private readonly TrainingDBContext Database;
@@ -30,6 +30,13 @@ namespace TrainingApp.DAL.Repositories
         public IEnumerable<Training> GetAll()
         {
             var trainings = Database.Trainings;
+
+            return trainings;
+        }
+
+        public IEnumerable<Training> GetByUserId(long id)
+        {
+            var trainings = Database.Trainings.Include("User").Include("Exercises").Where(tr => tr.UserId == id).AsEnumerable();
 
             return trainings;
         }
