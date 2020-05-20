@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainingApp.BLL", "Training
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainingApp.DAL", "TrainingApp.DAL\TrainingApp.DAL.csproj", "{41CD2977-CA60-4C69-8CE8-D6E3A880696A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingApp.Api", "TrainingApp.PL\TrainingApp.Api.csproj", "{2B741814-10B1-43A3-BF72-FE0DDCA55C6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingApp.Api", "TrainingApp.Api\TrainingApp.Api.csproj", "{2B741814-10B1-43A3-BF72-FE0DDCA55C6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
