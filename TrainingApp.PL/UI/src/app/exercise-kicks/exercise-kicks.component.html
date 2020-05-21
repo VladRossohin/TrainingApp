@@ -1,0 +1,18 @@
+<table *ngIf="tableMode" class="table table-striped" >
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Time</td>
+            <td>Reaction Speed</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let k of kicks">
+            <ng-template [ngIf]="kick?.id != k.id">
+                <td>{{k.id}}</td>
+                <td>{{k.kickDateTime}}</td>
+                <td>{{k.reactionSpeed}}</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
