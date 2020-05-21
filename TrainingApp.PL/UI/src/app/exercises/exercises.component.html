@@ -1,0 +1,53 @@
+<input type="button" value="Add" class="btn btn-default" (click)="addExercise()" />
+
+<table *ngIf="tableMode; else create" class="table table-striped" >
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Start</td>
+            <td>End</td>
+            <td></td>    
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of exercises">
+            <ng-template [ngIf]="exercise?.id != e.id" [ngIfElse] = "edit">
+                <td>{{e.id}}</td>
+                <td>{{e.startDateTime}}</td>
+                <td>{{e.endDateTime}}</td>
+                <td>
+                    <button class="btn btn-primaty" (click)="editExercise(e)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteExercise(e)">Delete</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="exercise.startDateTime" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="exercise.endDateTime" class="form-control" />
+    </td>
+    <td>
+            <input type="button" value="Save" (click)="saveExercise()" class="btn btn-sm btn-success" />
+            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+
+<ng-template #create>
+    <div class="form-group">
+        <label>Start</label>
+        <input type="text" [(ngModel)]="exercise.startDateTime" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>End</label>
+        <input type="text" [(ngModel)]="exercise.endDateTime" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Save" (click)="saveExercise()" class="btn btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

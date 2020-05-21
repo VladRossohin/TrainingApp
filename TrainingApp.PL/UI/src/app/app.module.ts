@@ -8,13 +8,15 @@ import { ResultsComponent } from './results/results.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserTrainingsComponent } from './user-trainings/user-trainings.component';
+import { ExercisesComponent } from './exercises/exercises.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultsComponent,
     UsersComponent,
-    UserTrainingsComponent
+    UserTrainingsComponent,
+    ExercisesComponent
   ],
   imports: [
     BrowserModule,
