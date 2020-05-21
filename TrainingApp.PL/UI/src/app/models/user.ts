@@ -3,6 +3,6 @@ export class User {
         public id?: number,
         public name?: string,
         public lastName?: string,
-        public roleId?: string
+        public roleId?: number
     ) {}
 }

@@ -27,6 +27,9 @@ export class UsersComponent implements OnInit {
 
   saveUser() {
     if (this.user.id == null) {
+      if (this.user.roleId == null) {
+        this.user.roleId = 1;
+      }
       this.userService.createUser(this.user).subscribe(data => this.loadUsers());
     } else {
       this.userService.updateUser(this.user.id, this.user).subscribe(data => this.loadUsers());
