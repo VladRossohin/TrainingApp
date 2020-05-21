@@ -1,10 +1,10 @@
 export class Kick {
     constructor (
-        id?: number,
-        exerciseId?: number,
-        kickDateTime?: Date,
-        kickPower?: number,
-        reactionSpeed?: number,
-        kickAccuracy?: number  
+        public id?: number,
+        public exerciseId?: number,
+        public kickDateTime?: Date,
+        public kickPower?: number,
+        public reactionSpeed?: number,
+        public kickAccuracy?: number  
     ) {}
 }

@@ -1,9 +1,9 @@
 export class Exercise {
     constructor (
-        id?: number,
-        trainingId?: number,
-        sensorId?: number,
-        startDateTime?: Date,
-        endDateTime?: Date
+        public id?: number,
+        public trainingId?: number,
+        public sensorId?: number,
+        public startDateTime?: Date,
+        public endDateTime?: Date
     ) {}
 }

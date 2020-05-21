@@ -1,0 +1,53 @@
+<input type="button" value="Add" class="btn btn-default" (click)="addTraining()" />
+
+<table *ngIf="tableMode; else create" class="table table-striped" >
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td></td>    
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of trainings">
+            <ng-template [ngIf]="training?.id != t.id" [ngIfElse] = "edit">
+                <td>{{t.id}}</td>
+                <td>{{t.name}}</td>
+                <td>{{t.description}}</td>
+                <td>
+                    <button class="btn btn-primaty" (click)="editTraining(t)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteTraining(t)">Delete</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="training.name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="training.description" class="form-control" />
+    </td>
+    <td>
+            <input type="button" value="Save" (click)="saveTraining()" class="btn btn-sm btn-success" />
+            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+
+<ng-template #create>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="training.name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="training.description" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Save" (click)="saveTraining()" class="btn btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

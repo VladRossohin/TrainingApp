@@ -7,12 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResultsComponent } from './results/results.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserTrainingsComponent } from './user-trainings/user-trainings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultsComponent,
-    UsersComponent
+    UsersComponent,
+    UserTrainingsComponent
   ],
   imports: [
     BrowserModule,

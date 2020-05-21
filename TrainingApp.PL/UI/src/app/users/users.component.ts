@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   user: User = new User();
   users: User[];
   tableMode: boolean = true;
+  selectedUser: number;
 
   constructor(private userService : UserService) { }
 
@@ -49,5 +50,9 @@ export class UsersComponent implements OnInit {
   addUser() {
     this.cancel();
     this.tableMode = false;
+  }
+
+  selectUser(u: User) {
+    this.selectedUser = u.id;
   }
 }

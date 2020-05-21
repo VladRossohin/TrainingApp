@@ -1,8 +1,8 @@
 export class Training {
     constructor (
-        id?: number,
-        userId?: number,
-        name?: string,
-        description?: string
+        public id?: number,
+        public userId?: number,
+        public name?: string,
+        public description?: string
     ) {}
 }

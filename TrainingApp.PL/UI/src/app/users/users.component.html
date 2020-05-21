@@ -11,15 +11,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let u of users">
+        <tr *ngFor="let u of users" class="">
             <ng-template [ngIf]="user?.id != u.id" [ngIfElse] = "edit">
-                <td>{{u.id}}</td>
-                <td>{{u.name}}</td>
-                <td>{{u.lastName}}</td>
-                <td>
-                    <button class="btn btn-primaty" (click)="editUser(u)">Edit</button>
+                <td class="">
+                    <a class="btn" data-toggle="collapse" href="#user-trainings" role="button" aria-expanded="false" aria-controls="user-trainings">{{u.id}}</a>
+                </td>
+                <td class="">{{u.name}}</td>
+                <td class="">{{u.lastName}}</td>
+                <td class="">
+                    <button class="btn btn-primary" (click)="editUser(u)">Edit</button>
                     <button class="btn btn-danger" (click)="deleteUser(u)">Delete</button>
                 </td>
+                <div class="collapse" id="user-trainings">
+                    <div class="card card-body">
+                        <app-user-trainings [user]="u"></app-user-trainings>
+                    </div>
+                </div>
             </ng-template>
         </tr>
     </tbody>
@@ -52,3 +59,4 @@
         <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
     </div>
 </ng-template>
+
