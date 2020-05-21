@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserTrainingsComponent } from './user-trainings/user-trainings.component';
 import { ExercisesComponent } from './exercises/exercises.component';
+import { SensorsComponent } from './sensors/sensors.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ExercisesComponent } from './exercises/exercises.component';
     ResultsComponent,
     UsersComponent,
     UserTrainingsComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    SensorsComponent
   ],
   imports: [
     BrowserModule,
