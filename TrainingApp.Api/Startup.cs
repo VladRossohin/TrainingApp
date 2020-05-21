@@ -37,6 +37,14 @@ namespace TrainingApp.PL
             services.AddDbContext<TrainingDBContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("TrainingDbConnection")));
 
+            // CORS
+            services.AddCors(o => o.AddPolicy("DefaultPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
+
             // Dependency Injection
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
             services.AddTransient<IUserService, UserService>();
@@ -65,6 +73,8 @@ namespace TrainingApp.PL
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("DefaultPolicy");
 
             app.UseHttpsRedirection();
 
