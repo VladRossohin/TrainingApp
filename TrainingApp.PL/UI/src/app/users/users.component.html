@@ -1,20 +1,46 @@
 <h1>List of users</h1>
 <input type="button" value="Add" class="btn btn-default" (click)="addUser()" />
 
-<table *ngIf="tableMode; else create" class="table table-striped" >
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                    aria-controls="collapseOne">
+                    Test
+                </button>
+            </h5>
+        </div>
+    </div>
+
+    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+            officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
+            wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+            excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+            you probably haven't heard of them accusamus labore sustainable VHS.
+
+        </div>
+    </div>
+</div>
+
+<table *ngIf="tableMode; else create" class="table table-striped">
     <thead>
         <tr>
             <td>ID</td>
             <td>Name</td>
             <td>Last Name</td>
-            <td></td>    
+            <td></td>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let u of users" class="">
-            <ng-template [ngIf]="user?.id != u.id" [ngIfElse] = "edit">
+    <tbody *ngFor="let u of users">
+        <tr>
+            <ng-template [ngIf]="user?.id != u.id" [ngIfElse]="edit">
                 <td class="">
-                    <a class="btn" data-toggle="collapse" href="#user-trainings" role="button" aria-expanded="false" aria-controls="user-trainings">{{u.id}}</a>
+                    <a class="btn" data-toggle="collapse" href="#user-trainings{{u.id}}" role="button"
+                        aria-expanded="false" aria-controls="user-trainings">{{u.id}}</a>
                 </td>
                 <td class="">{{u.name}}</td>
                 <td class="">{{u.lastName}}</td>
@@ -22,13 +48,43 @@
                     <button class="btn btn-primary" (click)="editUser(u)">Edit</button>
                     <button class="btn btn-danger" (click)="deleteUser(u)">Delete</button>
                 </td>
-                <div class="collapse" id="user-trainings">
+            </ng-template>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="collapse" id="user-trainings{{u.id}}">
                     <div class="card card-body">
                         <app-user-trainings [user]="u"></app-user-trainings>
                     </div>
                 </div>
-            </ng-template>
+            </td>
         </tr>
+
+        <!-- <tr *ngFor="let u of users" class="">
+            <ng-template [ngIf]="user?.id != u.id" [ngIfElse]="edit">
+                <td class="">
+                    <a class="btn" data-toggle="collapse" href="#user-trainings{{u.id}}" role="button"
+                        aria-expanded="false" aria-controls="user-trainings">{{u.id}}</a>
+                </td>
+                <td class="">{{u.name}}</td>
+                <td class="">{{u.lastName}}</td>
+                <td class="">
+                    <button class="btn btn-primary" (click)="editUser(u)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteUser(u)">Delete</button>
+                </td>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="collapse" id="user-trainings{{u.id}}">
+                                <div class="card card-body">
+                                    <app-user-trainings [user]="u"></app-user-trainings>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </ng-template>
+        </tr> -->
     </tbody>
 </table>
 
@@ -40,8 +96,8 @@
         <input type="text" [(ngModel)]="user.lastName" class="form-control" />
     </td>
     <td>
-            <input type="button" value="Save" (click)="saveUser()" class="btn btn-sm btn-success" />
-            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+        <input type="button" value="Save" (click)="saveUser()" class="btn btn-sm btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
     </td>
 </ng-template>
 
@@ -59,4 +115,3 @@
         <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
     </div>
 </ng-template>
-
