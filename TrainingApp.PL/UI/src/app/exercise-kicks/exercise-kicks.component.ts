@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { KickService } from '../services/kick.service';
 import { Exercise } from '../models/exercise';
 import { Kick } from '../models/kick';
+import { KickChartComponent } from '../kick-chart/kick-chart.component';
 
 @Component({
   selector: 'app-exercise-kicks',
@@ -11,16 +12,29 @@ import { Kick } from '../models/kick';
 })
 export class ExerciseKicksComponent implements OnInit {
 
+  @ViewChild('chartContainer', { read: ViewContainerRef }) entry: ViewContainerRef; 
+
   @Input() exercise: Exercise;
   kicks: Kick[];
   kick: Kick = new Kick();
 
+  get arrayOfKicks() {
+    return this.kickService.getKicksByExerciseId(this.exercise.id)
+  }
+
   tableMode: boolean = true;
 
-  constructor(private kickService: KickService) { }
+  constructor(private kickService: KickService, private resolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     this.loadKicks();
+  }
+
+  createChart(data: Kick[]) {
+    this.entry.clear();
+    const factory = this.resolver.resolveComponentFactory(KickChartComponent);
+    const componentRef = this.entry.createComponent(factory);
+    componentRef.instance.kicks = data;
   }
 
   loadKicks() {

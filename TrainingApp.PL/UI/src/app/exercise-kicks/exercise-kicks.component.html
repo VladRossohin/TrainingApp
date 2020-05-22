@@ -1,3 +1,6 @@
+<h5>
+    Kicks
+</h5>
 <table *ngIf="tableMode" class="table table-striped" >
     <thead>
         <tr>
@@ -11,8 +14,12 @@
             <ng-template [ngIf]="kick?.id != k.id">
                 <td>{{k.id}}</td>
                 <td>{{k.kickDateTime}}</td>
-                <td>{{k.reactionSpeed}}</td>
+                <td>{{k.reactionSpeed}} sec</td>
             </ng-template>
         </tr>
     </tbody>
 </table>
+<button class="btn btn-success" (click)="createChart(kicks)">See chart</button>
+<template #chartContainer>
+    <!-- <app-kick-chart [kicks]='this.arrayOfKicks'></app-kick-chart> -->
+</template>

@@ -1,3 +1,6 @@
+<h4>
+    {{user.name}} {{user.lastName}}'s trainings 
+</h4>
 <input type="button" value="Add" class="btn btn-default" (click)="addTraining()" />
 
 <table *ngIf="tableMode; else create" class="table table-striped" >

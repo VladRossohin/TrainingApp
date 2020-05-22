@@ -1,38 +1,13 @@
 <h1>List of users</h1>
 <input type="button" value="Add" class="btn btn-default" (click)="addUser()" />
 
-<div id="accordion">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                    aria-controls="collapseOne">
-                    Test
-                </button>
-            </h5>
-        </div>
-    </div>
-
-    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-            officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-            wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
-            excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-            you probably haven't heard of them accusamus labore sustainable VHS.
-
-        </div>
-    </div>
-</div>
-
 <table *ngIf="tableMode; else create" class="table table-striped">
     <thead>
         <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Last Name</td>
-            <td></td>
+            <td style="width: 10%">ID</td>
+            <td style="width: 35%">Name</td>
+            <td style="width: 35%">Last Name</td>
+            <td style="width: 20%"></td>
         </tr>
     </thead>
     <tbody *ngFor="let u of users">
@@ -59,32 +34,6 @@
                 </div>
             </td>
         </tr>
-
-        <!-- <tr *ngFor="let u of users" class="">
-            <ng-template [ngIf]="user?.id != u.id" [ngIfElse]="edit">
-                <td class="">
-                    <a class="btn" data-toggle="collapse" href="#user-trainings{{u.id}}" role="button"
-                        aria-expanded="false" aria-controls="user-trainings">{{u.id}}</a>
-                </td>
-                <td class="">{{u.name}}</td>
-                <td class="">{{u.lastName}}</td>
-                <td class="">
-                    <button class="btn btn-primary" (click)="editUser(u)">Edit</button>
-                    <button class="btn btn-danger" (click)="deleteUser(u)">Delete</button>
-                </td>
-                <table>
-                    <tr>
-                        <td>
-                            <div class="collapse" id="user-trainings{{u.id}}">
-                                <div class="card card-body">
-                                    <app-user-trainings [user]="u"></app-user-trainings>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </ng-template>
-        </tr> -->
     </tbody>
 </table>
 

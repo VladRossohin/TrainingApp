@@ -1,3 +1,6 @@
+<h5>
+    {{this.training.name}} exercises
+</h5>
 <input type="button" value="Add" class="btn btn-default" (click)="addExercise()" />
 
 <table *ngIf="tableMode; else create" class="table table-striped" >
@@ -9,18 +12,30 @@
             <td></td>    
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let e of exercises">
+    <tbody *ngFor="let e of exercises">
+        <tr>
             <ng-template [ngIf]="exercise?.id != e.id" [ngIfElse] = "edit">
-                <td>{{e.id}}</td>
+                <td>
+                    <a class="btn" data-toggle="collapse" href="#exercise-kicks{{e.id}}" role="button"
+                    aria-expanded="false" aria-controls="user-trainings">
+                        {{e.id}}
+                    </a>
+                </td>
                 <td>{{e.startDateTime}}</td>
                 <td>{{e.endDateTime}}</td>
                 <td>
-                    <button class="btn btn-primaty" (click)="editExercise(e)">Edit</button>
+                    <button class="btn btn-primary" (click)="editExercise(e)">Edit</button>
                     <button class="btn btn-danger" (click)="deleteExercise(e)">Delete</button>
                 </td>
             </ng-template>
         </tr>
+        <td colspan="4">
+            <div class="collapse" id="exercise-kicks{{e.id}}">
+                <div class="card card-body">
+                    <app-exercise-kicks [exercise]="e"></app-exercise-kicks>
+                </div>
+            </div>
+        </td>
     </tbody>
 </table>
 

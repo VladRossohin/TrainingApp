@@ -14,25 +14,36 @@ export class KickChartComponent implements OnInit {
     
   };
 
-  public chartLabels: Array<number>;
-  public chartData = {
-    data: [],
-    label: 'Reaction speed'
-  }
+  public chartLabels: string[] = [];
+  public chartData = [
+    {
+      data: [],
+      label: 'Reaction speed',
+      fill: false,
+      trendlineLinear: {
+        style: "rgba(255,105,180, .8)",
+		    lineStyle: "dotted|solid",
+		    width: 2
+      }
+    }
+  ];
+  
 
   public chartType = 'line';
   public chartLegend = true;
 
   constructor() {
-    this.kicks.forEach(k => {
-      this.chartLabels.push(k.kickDateTime.getTime());
-      this.chartData.data.push(k.reactionSpeed);
-    })
+    
    }
 
-
-
   ngOnInit(): void {
+    this.initData();
   }
 
+  initData() {
+     this.kicks.forEach((k) => {
+       this.chartLabels.push(k.kickDateTime.toString());
+       this.chartData[0].data.push(k.reactionSpeed);
+    });
+  }
 }
