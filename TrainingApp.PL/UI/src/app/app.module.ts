@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +13,7 @@ import { UserTrainingsComponent } from './user-trainings/user-trainings.componen
 import { ExercisesComponent } from './exercises/exercises.component';
 import { SensorsComponent } from './sensors/sensors.component';
 import { ExerciseKicksComponent } from './exercise-kicks/exercise-kicks.component';
+import { KickChartComponent } from './kick-chart/kick-chart.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,17 @@ import { ExerciseKicksComponent } from './exercise-kicks/exercise-kicks.componen
     UserTrainingsComponent,
     ExercisesComponent,
     SensorsComponent,
-    ExerciseKicksComponent
+    ExerciseKicksComponent,
+    KickChartComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    // ChartJS
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
