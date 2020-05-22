@@ -9,22 +9,37 @@
             <td></td>    
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let t of trainings">
+    <tbody *ngFor="let t of trainings">
+        <tr>
             <ng-template [ngIf]="training?.id != t.id" [ngIfElse] = "edit">
-                <td>{{t.id}}</td>
+                <td>
+                    <a class="btn" data-toggle="collapse" href="#exercise{{t.id}}" role="button"
+                    aria-expanded="false" aria-controls="user-trainings">
+                        {{t.id}}
+                    </a>
+                </td>
                 <td>{{t.name}}</td>
                 <td>{{t.description}}</td>
                 <td>
-                    <button class="btn btn-primaty" (click)="editTraining(t)">Edit</button>
+                    <button class="btn btn-primary" (click)="editTraining(t)">Edit</button>
                     <button class="btn btn-danger" (click)="deleteTraining(t)">Delete</button>
                 </td>
             </ng-template>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="collapse" id="exercise{{t.id}}">
+                    <div class="card card-body">
+                        <app-exercises [training]="t"></app-exercises>
+                    </div>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
 
 <ng-template #edit>
+    <td></td>
     <td>
         <input type="text" [(ngModel)]="training.name" class="form-control" />
     </td>
