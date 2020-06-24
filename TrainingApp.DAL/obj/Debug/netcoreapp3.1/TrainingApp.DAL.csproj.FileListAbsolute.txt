@@ -10,3 +10,4 @@ D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\Trai
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.dll
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.pdb
 D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.genruntimeconfig.cache
+D:\Projects\TrainingApp\TrainingApp\TrainingApp.DAL\obj\Debug\netcoreapp3.1\TrainingApp.DAL.csprojAssemblyReference.cache
